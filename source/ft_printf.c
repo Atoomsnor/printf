@@ -6,13 +6,11 @@
 /*   By: roversch <roversch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:40:30 by roversch          #+#    #+#             */
-/*   Updated: 2024/11/08 16:20:19 by roversch         ###   ########.fr       */
+/*   Updated: 2024/11/08 16:48:51 by roversch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <unistd.h>
-#include <stdarg.h>
+#include "ft_printf.h"
 
 int	ft_printchar(char c)
 {

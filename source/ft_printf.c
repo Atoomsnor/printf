@@ -6,11 +6,11 @@
 /*   By: roversch <roversch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:40:30 by roversch          #+#    #+#             */
-/*   Updated: 2024/11/08 16:48:51 by roversch         ###   ########.fr       */
+/*   Updated: 2024/11/11 16:17:18 by roversch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../include/ft_printf.h"
 
 int	ft_printchar(char c)
 {
@@ -22,21 +22,20 @@ int	ft_format(const char format, va_list args)
 {
 	int	printlen;
 
-	printlen = 0;
 	if (format == 'c')
-		ft_printchar(va_arg(args, int));
+		printlen += ft_printchar(va_arg(args, int));
 	else if (format == 's')
-		ft_printstr(va_arg(args, char *));
-	else if (format == 'p')
-		ft_printvoid(va_arg(args, void *));
+		printlen += ft_printstr(va_arg(args, char *));
+	// else if (format == 'p')
+	// 	ft_printvoid(va_arg(args, void *));
 	else if (format == 'd' || format == 'i')
-		ft_printint(va_arg(args, int));
+		printlen += ft_printnbr(va_arg(args, int));
 	else if (format == 'u')
-		ft_print_unsign_deci(va_arg(args, unsigned int));
-	else if (format == 'x')
-		ft_print_low_hexa(va_arg(args, unsigned int));
-	else if (format == 'X')
-		ft_print_up_hexa(va_arg(args, unsigned int));
+		printlen += ft_unsign_printnbr(va_arg(args, unsigned int));
+	// else if (format == 'x')
+	// 	ft_print_low_hexa(va_arg(args, unsigned int));
+	// else if (format == 'X')
+	// ft_print_up_hexa(va_arg(args, unsigned int));
 	else if (format == '%')
 		ft_printchar('%');
 	return (printlen);
@@ -70,7 +69,7 @@ int	main()
 {
 	int	len;
 
-	len = ft_printf("Hello %c kek\n", 'W');
+	len = ft_printf("123%d5%i7%u\n",4, 6, 8);
 	printf("Chars prined: %d\n", len);
 	return (0);
 }

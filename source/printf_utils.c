@@ -6,13 +6,13 @@
 /*   By: roversch <roversch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 17:00:36 by roversch          #+#    #+#             */
-/*   Updated: 2024/11/11 16:15:28 by roversch         ###   ########.fr       */
+/*   Updated: 2024/11/12 16:12:32 by roversch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-int	ft_printstr(char *str)
+int	ft_print_str(char *str)
 {
 	int	i;
 
@@ -27,7 +27,7 @@ int	ft_printstr(char *str)
 	return (i);
 }
 
-int	ft_printnbr(int n)
+int	ft_print_nbr(int n)
 {
 	int		i;
 	char	c;
@@ -44,13 +44,13 @@ int	ft_printnbr(int n)
 		n = -n;
 	}
 	if (n >= 10)
-		i += ft_printnbr(n / 10);
+		i += ft_print_nbr(n / 10);
 	c = (n % 10) + 48;
 	write (1, &c, 1);
 	return (++i);
 }
 
-int	ft_unsign_printnbr(unsigned int n)
+int	ft_print_uns_deci(unsigned int n)
 {
 	int		i;
 	char	c;
@@ -58,7 +58,7 @@ int	ft_unsign_printnbr(unsigned int n)
 	i = 0;
 
 	if (n >= 10)
-		i += ft_unsign_printnbr(n / 10);
+		i += ft_print_uns_deci(n / 10);
 	c = (n % 10) + 48;
 	write (1, &c, 1);
 	return (++i);

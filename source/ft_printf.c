@@ -6,13 +6,13 @@
 /*   By: roversch <roversch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:40:30 by roversch          #+#    #+#             */
-/*   Updated: 2024/11/11 16:17:18 by roversch         ###   ########.fr       */
+/*   Updated: 2024/11/12 16:12:44 by roversch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-int	ft_printchar(char c)
+int	ft_print_char(char c)
 {
 	write (1, &c, 1);
 	return (1);
@@ -22,22 +22,21 @@ int	ft_format(const char format, va_list args)
 {
 	int	printlen;
 
+	printlen = 0;
 	if (format == 'c')
-		printlen += ft_printchar(va_arg(args, int));
+		printlen += ft_print_char(va_arg(args, int));
 	else if (format == 's')
-		printlen += ft_printstr(va_arg(args, char *));
+		printlen += ft_print_str(va_arg(args, char *));
 	// else if (format == 'p')
 	// 	ft_printvoid(va_arg(args, void *));
 	else if (format == 'd' || format == 'i')
-		printlen += ft_printnbr(va_arg(args, int));
+		printlen += ft_print_nbr(va_arg(args, int));
 	else if (format == 'u')
-		printlen += ft_unsign_printnbr(va_arg(args, unsigned int));
-	// else if (format == 'x')
-	// 	ft_print_low_hexa(va_arg(args, unsigned int));
-	// else if (format == 'X')
-	// ft_print_up_hexa(va_arg(args, unsigned int));
+		printlen += ft_print_uns_deci(va_arg(args, unsigned int));
+	else if (format == 'x' || format == 'X')
+		printlen += ft_print_hex(va_arg(args, unsigned int), format);
 	else if (format == '%')
-		ft_printchar('%');
+		printlen += ft_print_char('%');
 	return (printlen);
 }
 
@@ -58,7 +57,7 @@ int	ft_printf(const char *str, ...)
 			i++;
 		}
 		else 
-			printlen += ft_printchar(str[i]);
+			printlen += ft_print_char(str[i]);
 		i++;
 	}
 	va_end(args);
@@ -69,7 +68,7 @@ int	main()
 {
 	int	len;
 
-	len = ft_printf("123%d5%i7%u\n",4, 6, 8);
+	len = ft_printf("%c %s %d %i %u %x %X %%\n", 'a', "bcd", 10, 10, 10, 90, 90);
 	printf("Chars prined: %d\n", len);
 	return (0);
 }

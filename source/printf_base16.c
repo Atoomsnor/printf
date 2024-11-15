@@ -6,7 +6,7 @@
 /*   By: roversch <roversch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:32:21 by roversch          #+#    #+#             */
-/*   Updated: 2024/11/12 16:04:31 by roversch         ###   ########.fr       */
+/*   Updated: 2024/11/15 15:05:18 by roversch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,7 @@ int	ft_print_hex(unsigned int n, const char format)
 	else
 	{
 		if (n <= 9)
-		{	
 			i += ft_print_char(n + '0');
-		}
 		else
 		{
 			if (format == 'x')
@@ -37,4 +35,36 @@ int	ft_print_hex(unsigned int n, const char format)
 		}
 	}
 	return (i);
+}
+
+int	ft_put_ptr(unsigned long n)
+{
+	int	i;
+
+	i = 0;
+	if (n >= 16)
+	{
+		i += ft_put_ptr(n / 16);
+		i += ft_put_ptr(n % 16);
+	}
+	else
+	{
+		if (n <= 9)
+			i += ft_print_char(n + '0');
+		else
+			i += ft_print_char(n - 10 + 'a');
+	}
+	return (i);
+}
+
+int	ft_print_ptr(unsigned long n)
+{
+	int	i;
+
+	i = 0;
+	if (n == 0)
+		return (write(1, "(nil)", 5));
+	write(1, "0x", 2);
+	i += ft_put_ptr(n);
+	return (i + 2);
 }

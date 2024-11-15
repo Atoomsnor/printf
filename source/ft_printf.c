@@ -6,17 +6,11 @@
 /*   By: roversch <roversch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:40:30 by roversch          #+#    #+#             */
-/*   Updated: 2024/11/12 16:12:44 by roversch         ###   ########.fr       */
+/*   Updated: 2024/11/15 15:15:00 by roversch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
-
-int	ft_print_char(char c)
-{
-	write (1, &c, 1);
-	return (1);
-}
 
 int	ft_format(const char format, va_list args)
 {
@@ -27,8 +21,8 @@ int	ft_format(const char format, va_list args)
 		printlen += ft_print_char(va_arg(args, int));
 	else if (format == 's')
 		printlen += ft_print_str(va_arg(args, char *));
-	// else if (format == 'p')
-	// 	ft_printvoid(va_arg(args, void *));
+	else if (format == 'p')
+		printlen += ft_print_ptr(va_arg(args, unsigned long));
 	else if (format == 'd' || format == 'i')
 		printlen += ft_print_nbr(va_arg(args, int));
 	else if (format == 'u')
@@ -42,33 +36,24 @@ int	ft_format(const char format, va_list args)
 
 int	ft_printf(const char *str, ...)
 {
-	int	i;
-	int	printlen;
+	int		i;
+	int		printlen;
 	va_list	args;
-	
+
 	i = 0;
 	printlen = 0;
 	va_start(args, str);
 	while (str[i])
 	{
 		if (str[i] == '%')
-		{	
+		{
 			printlen += ft_format(str[i + 1], args);
 			i++;
 		}
-		else 
+		else
 			printlen += ft_print_char(str[i]);
 		i++;
 	}
 	va_end(args);
 	return (printlen);
-}
-
-int	main()
-{
-	int	len;
-
-	len = ft_printf("%c %s %d %i %u %x %X %%\n", 'a', "bcd", 10, 10, 10, 90, 90);
-	printf("Chars prined: %d\n", len);
-	return (0);
 }

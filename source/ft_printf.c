@@ -6,7 +6,7 @@
 /*   By: roversch <roversch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:40:30 by roversch          #+#    #+#             */
-/*   Updated: 2024/11/15 15:15:00 by roversch         ###   ########.fr       */
+/*   Updated: 2024/11/25 15:45:32 by roversch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ int	ft_printf(const char *str, ...)
 	i = 0;
 	printlen = 0;
 	va_start(args, str);
+	if (!str)
+		return (-1);
 	while (str[i])
 	{
 		if (str[i] == '%')

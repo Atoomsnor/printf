@@ -6,11 +6,11 @@
 /*   By: roversch <roversch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 17:00:36 by roversch          #+#    #+#             */
-/*   Updated: 2024/11/18 16:48:46 by roversch         ###   ########.fr       */
+/*   Updated: 2024/11/27 13:32:20 by roversch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
+#include <unistd.h>
 
 int	ft_print_nbr(int n)
 {

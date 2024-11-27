@@ -6,11 +6,12 @@
 /*   By: roversch <roversch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:32:21 by roversch          #+#    #+#             */
-/*   Updated: 2024/11/25 15:29:36 by roversch         ###   ########.fr       */
+/*   Updated: 2024/11/27 14:00:39 by roversch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
+#include <ft_printf.h>
+#include <unistd.h>
 
 int	ft_print_hex(unsigned int n, const char format)
 {

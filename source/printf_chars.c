@@ -6,11 +6,11 @@
 /*   By: roversch <roversch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 15:14:18 by roversch          #+#    #+#             */
-/*   Updated: 2024/11/18 16:48:52 by roversch         ###   ########.fr       */
+/*   Updated: 2024/11/27 13:31:41 by roversch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
+#include <unistd.h>
 
 int	ft_print_char(char c)
 {
